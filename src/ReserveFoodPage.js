@@ -7,7 +7,9 @@ const reserveFoodPage = ({selectedFood}) => {
             <div>{selectedFood.name}</div>
             <div>{selectedFood.description}</div>
             <div>{selectedFood.url}</div>
+            <button>Reserve</button>
         </div>
+
 
     )
 }
