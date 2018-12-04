@@ -11,38 +11,41 @@ class App extends React.Component {
 
   state = {
     foodList: [],
-    reserver: undefined
+    reserver: false,
+    homepage: true
   }
 
   componentDidMount() {
     fetch('http://localhost:3000/v1/foods')
       .then(resp => resp.json())
-      .then(foods => this.setState({foods}))
+      .then(foodList => this.setState({foodList}))
   }
 
   isReserver = () => {
     this.setState({
-      reserver: true
+      reserver: true,
+      homepage: false
     })
     console.log(`user type is ${this.state.reserver}`)
   }
 
   isSharer = () => {
     this.setState({
-      reserver: false
+      reserver: false,
+      homepage: false
     })
     console.log(`user type is ${this.state.reserver}`)
   }
 
   render() {
     console.log(`Render user type is ${this.state.reserver}`)
-    const {foodList, reserver} = this.state
+    const {foodList, reserver, homepage} = this.state
     return (
       <div className="App">
         <Nav />
         {
-          reserver === undefined
-            ? <div>
+          (homepage === true) ?
+            <div>
               <h1>Share your food App!</h1>
               <h3>Carrot cake chupa chups sweet chocolate biscuit gummies dessert candy
                   halvah. Muffin tiramisu lollipop jelly beans wafer sweet roll pie candy canes.
@@ -50,12 +53,9 @@ class App extends React.Component {
               <button onClick={() => this.isSharer()}>Share Food</button>
               <button onClick={() => this.isReserver()}>Reserve Food</button>
             </div>
-            : null
-        }
-        {
-          reserver === false
-            ? <div><FoodList foodList={foodList} /></div>
-            : <div><FoodForm /></div>
+            : (reserver === false && homepage === false)
+              ? <div><FoodList foodList={foodList} /></div>
+              : <div><FoodForm /></div>
         }
       </div>
     );
