@@ -1,28 +1,57 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import LandingScreen from './LandingScreen';
+import FoodPage from './FoodPage';
+import CreateFoodPage from './CreateFoodPage';
 
 class App extends Component {
-  render() {
+
+  state = {
+    foods: [
+      {
+      id: 1,
+      name: 'cake',
+      description: 'cake cake cake cake cake cake Carrot cake chupa chups sweet chocolate biscuit gummies dessert candy halvah. Muffin tiramisu lollipop jelly beans wafer sweet roll pie candy canes. Lemon drops danish marshmallow soufflé ice cream cake.',
+      url: 'https://www.caracaschronicles.com/wp-content/uploads/2013/03/16714-birthday-cake-760x580.jpg'
+      },
+      {
+        id: 2,
+        name: 'cake',
+        description: 'cake cake cake cake cake cake Carrot cake chupa chups sweet chocolate biscuit gummies dessert candy halvah. Muffin tiramisu lollipop jelly beans wafer sweet roll pie candy canes. Lemon drops danish marshmallow soufflé ice cream cake.',
+        url: 'https://www.caracaschronicles.com/wp-content/uploads/2013/03/16714-birthday-cake-760x580.jpg'
+      },
+      {
+        id: 3,
+        name: 'cake',
+        description: 'cake cake cake cake cake cake Carrot cake chupa chups sweet chocolate biscuit gummies dessert candy halvah. Muffin tiramisu lollipop jelly beans wafer sweet roll pie candy canes. Lemon drops danish marshmallow soufflé ice cream cake.',
+        url: 'https://www.caracaschronicles.com/wp-content/uploads/2013/03/16714-birthday-cake-760x580.jpg'
+      },
+      {
+        id: 4,
+        name: 'cake',
+        description: 'cake cake cake cake cake cake Carrot cake chupa chups sweet chocolate biscuit gummies dessert candy halvah. Muffin tiramisu lollipop jelly beans wafer sweet roll pie candy canes. Lemon drops danish marshmallow soufflé ice cream cake.',
+        url: 'https://www.caracaschronicles.com/wp-content/uploads/2013/03/16714-birthday-cake-760x580.jpg'
+      }
+    ]
+  }
+
+  createFood = () => {
+    
+  }
+
+  render () {
+    const { foods } =  this.state
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div className='App'>
+        <LandingScreen />
+        <br />
+        <hr />
+        <FoodPage foods={foods} />
+        <br />
+        <hr />
+        <CreateFoodPage />
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
