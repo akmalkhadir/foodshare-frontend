@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import LandingScreen from './LandingScreen';
 import FoodPage from './FoodPage';
+import CreateFoodPage from './CreateFoodPage';
 
 class App extends Component {
 
@@ -33,12 +34,21 @@ class App extends Component {
     ]
   }
 
+  createFood = () => {
+    
+  }
+
   render () {
     const { foods } =  this.state
     return (
       <div className='App'>
         <LandingScreen />
+        <br />
+        <hr />
         <FoodPage foods={foods} />
+        <br />
+        <hr />
+        <CreateFoodPage />
       </div>
     )
   }

@@ -5,7 +5,7 @@ import { CardGroup } from 'semantic-ui-react'
 const FoodList = ({ foods }) => {
   return (
     <CardGroup>
-      {foods.map(food => <FoodCard food={food} />)}
+      {foods.map(food => <FoodCard key={food.id} food={food} />)}
     </CardGroup>
   )
 }

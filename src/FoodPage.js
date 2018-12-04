@@ -6,7 +6,10 @@ class FoodPage extends Component {
     const { foods } = this.props
     return (
       <div>
-        <FoodList foods={foods} />
+        <h1>Food List</h1>
+          <FoodList 
+            foods={foods}
+          />
       </div>
     )
   }
