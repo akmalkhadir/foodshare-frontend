@@ -1,5 +1,6 @@
 import React from 'react'
 import { Card } from 'semantic-ui-react'
+import Unsplash from 'unsplash-js'
 
 const FoodCard = ({ food, foodCardClickHandler }) => {
   return (
