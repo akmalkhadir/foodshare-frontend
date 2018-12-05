@@ -10,7 +10,8 @@ class App extends Component {
 
   state = {
     foods: [],
-    selectedFood: null
+    selectedFood: null,
+    page: `foods`
   }
 
   url = 'http://localhost:3001/v1/'
@@ -30,21 +31,25 @@ class App extends Component {
     this.setState({selectedFood: food})
   }
 
+  setPageToFoods = () => {
+    this.setState({page: `foods`})
+  }
+
+  setPageToCreateFood = () => {
+    this.setState({ page: `create` })
+  }
+
+
   render() {
-    const {foods, selectedFood} = this.state
-    const {foodCardClickHandler} = this
+    const {page, foods} = this.state
+    const {foodCardClickHandler, setPageToCreateFood, setPageToFoods} =  this
     return (
-      selectedFood ?
-        <ReserveFoodPage selectedFood={selectedFood} /> :
         <div className='App'>
-        <NavBar />
-          <LandingScreen />
-          <br />
-          <hr />
-          <FoodPage foods={foods} foodCardClickHandler={foodCardClickHandler} />
-          <br />
-          <hr />
-          <CreateFoodPage />
+        <NavBar createFood={setPageToCreateFood} foods={setPageToFoods} />
+          { page === `foods` 
+            ? <FoodPage foods={foods} foodCardClickHandler={foodCardClickHandler} />
+            : <CreateFoodPage />
+          }
         </div>
     )
   }

@@ -2,11 +2,17 @@ import React, { Component } from 'react'
 import { Menu } from 'semantic-ui-react'
 
 
-export default class MenuExampleStackable extends Component {
+export default class NavBar extends Component {
     state = {}
 
-    handleItemClick = (e, { name }) => this.setState({ activeItem: name });
-
+    handleItemClick = (e, { name }) => {
+        this.setState({ activeItem: name })
+        if (name === `foods`) {
+            this.props.foods()
+        } else {
+            this.props.createFood()
+        }
+    }
 
     render() {
         const { activeItem } = this.state
