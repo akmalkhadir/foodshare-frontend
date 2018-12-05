@@ -1,7 +1,7 @@
 import React from 'react'
-import { Card, Image, Button } from 'semantic-ui-react'
+import {Card, Image, Button} from 'semantic-ui-react'
 
-const ReserveFoodPage = ({ selectedFood }) => {
+const ReserveFoodPage = ({ selectedFood, handleSubmit }) => {
   const startDate = new Date(selectedFood.start_time)
   const endDate = new Date(selectedFood.end_time)
   var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' }
@@ -19,7 +19,7 @@ const ReserveFoodPage = ({ selectedFood }) => {
       </Card.Content>
       <Card.Content extra>
         <div className='ui buttons'>
-          <Button basic color='green'>
+          <Button basic color='green' onClick={handleSubmit}>
             Reserve
           </Button>
         </div>
@@ -27,4 +27,5 @@ const ReserveFoodPage = ({ selectedFood }) => {
     </Card>
   )
 }
+
 export default ReserveFoodPage

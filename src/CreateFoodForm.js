@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { Form, Input, TextArea, Checkbox, Button } from 'semantic-ui-react'
+import React, {Component} from 'react'
+import {Form, Input, TextArea, Checkbox, Button} from 'semantic-ui-react'
 import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css"
 
@@ -24,8 +24,7 @@ class CreateFoodForm extends Component {
     }
   }
 
-  
-  handleSubmit (food) {
+  handleSubmit(food) {
     fetch('http://localhost:3001/v1/foods', {
       method: 'POST',
       headers: {
@@ -36,14 +35,13 @@ class CreateFoodForm extends Component {
 
   }
 
-
   handleInputChange = (event) => {
     const target = event.target
     const value = target.value
     const name = target.name
 
     this.setState({
-      food: { ...this.state.food, [name]: value }
+      food: {...this.state.food, [name]: value}
     });
   }
 
@@ -52,26 +50,26 @@ class CreateFoodForm extends Component {
     const name = data.name
 
     this.setState({
-      food: { ...this.state.food, [name]: value }
+      food: {...this.state.food, [name]: value}
     });
   }
 
   handleChangeEnd = (date) => {
     console.log(date)
     this.setState({
-      food: { ...this.state.food, end_time: date }
+      food: {...this.state.food, end_time: date}
     })
   }
 
   handleChangeStart = (date) => {
     console.log(date)
     this.setState({
-      food: { ...this.state.food, start_time: date }
+      food: {...this.state.food, start_time: date}
     })
   }
 
   render() {
-    const { vegetarian, vegan, gluten_free, nut_free, seafood_free, halal, kosher, start_time, end_time } = this.state.food
+    const {vegetarian, vegan, gluten_free, nut_free, seafood_free, halal, kosher, start_time, end_time} = this.state.food
     return (
       <Form widths='equal'>
         <Form.Field control={Input} label='Food Name' name='name' placeholder='Food Name' onChange={this.handleInputChange} />

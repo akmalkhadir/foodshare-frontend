@@ -1,8 +1,6 @@
 import React, {Component} from 'react'
-import LandingScreen from './LandingScreen';
 import FoodPage from './FoodPage';
 import CreateFoodPage from './CreateFoodPage';
-import ReserveFoodPage from './ReserveFoodPage';
 import NavBar from './NavBar';
 
 
@@ -16,7 +14,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch(`http://localhost:3001/v1/foods`)
+    fetch(`http://localhost:3000/v1/foods`)
       .then(resp => resp.json())
       .then(foods => this.setState({foods}))
 
@@ -40,8 +38,8 @@ class App extends Component {
   }
 
   setPageToCreateFood = () => {
-    this.setState({ page: `create` })
-    this.setState({ selectedFood: null })
+    this.setState({page: `create`})
+    this.setState({selectedFood: null})
   }
 
 
@@ -49,7 +47,7 @@ class App extends Component {
     const {page, foods, selectedFood, reservedFood} = this.state
     const {foodCardClickHandler, setPageToCreateFood, setPageToFoods} =  this
     return (
-        <div className='App'>
+      <div className='App'>
         <NavBar createFood={setPageToCreateFood} foods={setPageToFoods} />
           { page === `foods` 
             ? <FoodPage foods={foods} foodCardClickHandler={foodCardClickHandler} selectedFood={selectedFood} reservedFood={reservedFood} />
