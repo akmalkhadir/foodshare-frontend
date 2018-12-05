@@ -3,43 +3,20 @@ import LandingScreen from './LandingScreen';
 import FoodPage from './FoodPage';
 import CreateFoodPage from './CreateFoodPage';
 import ReserveFoodPage from './ReserveFoodPage';
+import NavBar from './NavBar';
+
 
 class App extends Component {
 
   state = {
-    foods: [
-      // {
-      //   id: 1,
-      //   name: 'cake',
-      //   description: 'cake cake cake cake cake cake Carrot cake chupa chups sweet chocolate biscuit gummies dessert candy halvah. Muffin tiramisu lollipop jelly beans wafer sweet roll pie candy canes. Lemon drops danish marshmallow soufflé ice cream cake.',
-      //   url: 'https://www.caracaschronicles.com/wp-content/uploads/2013/03/16714-birthday-cake-760x580.jpg'
-      // },
-      // {
-      //   id: 2,
-      //   name: 'cake',
-      //   description: 'cake cake cake cake cake cake Carrot cake chupa chups sweet chocolate biscuit gummies dessert candy halvah. Muffin tiramisu lollipop jelly beans wafer sweet roll pie candy canes. Lemon drops danish marshmallow soufflé ice cream cake.',
-      //   url: 'https://www.caracaschronicles.com/wp-content/uploads/2013/03/16714-birthday-cake-760x580.jpg'
-      // },
-      // {
-      //   id: 3,
-      //   name: 'cake',
-      //   description: 'cake cake cake cake cake cake Carrot cake chupa chups sweet chocolate biscuit gummies dessert candy halvah. Muffin tiramisu lollipop jelly beans wafer sweet roll pie candy canes. Lemon drops danish marshmallow soufflé ice cream cake.',
-      //   url: 'https://www.caracaschronicles.com/wp-content/uploads/2013/03/16714-birthday-cake-760x580.jpg'
-      // },
-      // {
-      //   id: 4,
-      //   name: 'cake',
-      //   description: 'cake cake cake cake cake cake Carrot cake chupa chups sweet chocolate biscuit gummies dessert candy halvah. Muffin tiramisu lollipop jelly beans wafer sweet roll pie candy canes. Lemon drops danish marshmallow soufflé ice cream cake.',
-      //   url: 'https://www.caracaschronicles.com/wp-content/uploads/2013/03/16714-birthday-cake-760x580.jpg'
-      // }
-    ],
+    foods: [],
     selectedFood: null
   }
 
-  url = 'http://localhost:3000/v1/'
+  url = 'http://localhost:3001/v1/'
 
   componentDidMount() {
-    fetch(`http://localhost:3000/v1/foods`)
+    fetch(`http://localhost:3001/v1/foods`)
       .then(resp => resp.json())
       .then(foods => this.setState({foods}))
   }
@@ -60,6 +37,7 @@ class App extends Component {
       selectedFood ?
         <ReserveFoodPage selectedFood={selectedFood} /> :
         <div className='App'>
+        <NavBar />
           <LandingScreen />
           <br />
           <hr />
