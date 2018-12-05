@@ -9,15 +9,18 @@ class App extends Component {
   state = {
     foods: [],
     selectedFood: null,
-    page: `foods`
+    page: `foods`,
+    reservedFood: []
   }
-
-  url = 'http://localhost:3000/v1/'
 
   componentDidMount() {
     fetch(`http://localhost:3000/v1/foods`)
       .then(resp => resp.json())
       .then(foods => this.setState({foods}))
+
+    fetch('http://localhost:3001/v1/consumers/2')
+      .then(resp => resp.json())
+      .then(reservedFood => this.setState({reservedFood:reservedFood.foods}))
   }
 
   createFood = () => {
@@ -41,16 +44,16 @@ class App extends Component {
 
 
   render() {
-    const {page, foods, selectedFood} = this.state
-    const {foodCardClickHandler, setPageToCreateFood, setPageToFoods} = this
+    const {page, foods, selectedFood, reservedFood} = this.state
+    const {foodCardClickHandler, setPageToCreateFood, setPageToFoods} =  this
     return (
       <div className='App'>
         <NavBar createFood={setPageToCreateFood} foods={setPageToFoods} />
-        {page === `foods`
-          ? <FoodPage foods={foods} foodCardClickHandler={foodCardClickHandler} selectedFood={selectedFood} />
-          : <CreateFoodPage />
-        }
-      </div>
+          { page === `foods` 
+            ? <FoodPage foods={foods} foodCardClickHandler={foodCardClickHandler} selectedFood={selectedFood} reservedFood={reservedFood} />
+            : <CreateFoodPage />
+          }
+        </div>
     )
   }
 }
