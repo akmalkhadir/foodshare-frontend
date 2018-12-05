@@ -1,5 +1,5 @@
 import React from 'react'
-import {Card, Image, Button} from 'semantic-ui-react'
+import { Card, Image, Button } from 'semantic-ui-react'
 
 const ReserveFoodPage = ({ selectedFood, handleSubmit }) => {
   const startDate = new Date(selectedFood.start_time)
@@ -8,7 +8,7 @@ const ReserveFoodPage = ({ selectedFood, handleSubmit }) => {
   return (
     <Card fluid centered>
       <Card.Content>
-        <Image floated='right' size='large' src='https://react.semantic-ui.com/images/avatar/large/steve.jpg' />
+        <Image floated='right' size='large' src={`https://source.unsplash.com/collection/1054947&sig${selectedFood.id}`} />
         <Card.Header>{selectedFood.name}</Card.Header>
         <Card.Description>
           <p>Description: {selectedFood.description}</p>

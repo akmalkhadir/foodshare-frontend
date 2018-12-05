@@ -2,10 +2,10 @@ import React from 'react'
 import { Card } from 'semantic-ui-react'
 import Unsplash from 'unsplash-js'
 
-const FoodCard = ({ food, foodCardClickHandler }) => {
+const FoodCard = ({ food, foodCardClickHandler, imgUrl }) => {
   return (
     <Card
-      image={food.url}
+      image={imgUrl}
       header={food.name}
       description={food.description}
       onClick={() => foodCardClickHandler(food)}

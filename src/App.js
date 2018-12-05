@@ -18,7 +18,7 @@ class App extends Component {
       .then(resp => resp.json())
       .then(foods => this.setState({foods}))
 
-    fetch('http://localhost:3001/v1/consumers/2')
+    fetch('http://localhost:3001/v1/consumers/3')
       .then(resp => resp.json())
       .then(reservedFood => this.setState({reservedFood:reservedFood.foods}))
   }
@@ -35,7 +35,7 @@ class App extends Component {
         },
         body: JSON.stringify({
           food_id: this.state.selectedFood.id,
-          consumer_id: 2
+          consumer_id: 3
         })
       }).then(resp => resp.json())
   }
@@ -55,15 +55,19 @@ class App extends Component {
     this.setState({selectedFood: null})
   }
 
+  reservedFoodClickHandler = () => {
+    console.log('Hello')
+  }
+
 
   render() {
     const {page, foods, selectedFood, reservedFood} = this.state
-    const {foodCardClickHandler, setPageToCreateFood, setPageToFoods, reserveFood} =  this
+    const {foodCardClickHandler, setPageToCreateFood, setPageToFoods, reserveFood, reservedFoodClickHandler} =  this
     return (
       <div className='App'>
         <NavBar createFood={setPageToCreateFood} foods={setPageToFoods} />
           { page === `foods` 
-            ? <FoodPage foods={foods} foodCardClickHandler={foodCardClickHandler} selectedFood={selectedFood} reservedFood={reservedFood} reserveFood={reserveFood} />
+            ? <FoodPage foods={foods} foodCardClickHandler={foodCardClickHandler} selectedFood={selectedFood} reservedFood={reservedFood} reserveFood={reserveFood} reservedFoodClickHandler={reservedFoodClickHandler} />
             : <CreateFoodPage />
           }
         </div>

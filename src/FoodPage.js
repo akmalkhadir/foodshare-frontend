@@ -7,7 +7,7 @@ import ReservedFoodContainer from './ReservedFoodContainer'
 
 class FoodPage extends Component {
   render () {
-    const { foods, foodCardClickHandler, selectedFood, reservedFood, reserveFood } = this.props
+    const { foods, foodCardClickHandler, selectedFood, reservedFood, reserveFood, reservedFoodClickHandler } = this.props
     return (
       <div>
         { selectedFood === null
@@ -23,7 +23,7 @@ class FoodPage extends Component {
           Your Reserved Foods
         </Header>
         <CardGroup>
-          <ReservedFoodContainer foods={reservedFood} />
+          <ReservedFoodContainer foods={reservedFood} foodCardClickHandler={reservedFoodClickHandler} />
         </CardGroup>
       </div>
     )
