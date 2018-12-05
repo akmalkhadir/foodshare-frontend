@@ -7,7 +7,6 @@ const FoodCard = ({food, foodCardClickHandler}) => {
     <Card
       image={food.url}
       header={food.name}
-      meta={food.name}
       description={food.description}
       onClick={() => foodCardClickHandler(food)}
     />
