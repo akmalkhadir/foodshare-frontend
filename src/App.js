@@ -33,21 +33,23 @@ class App extends Component {
 
   setPageToFoods = () => {
     this.setState({page: `foods`})
+    this.setState({selectedFood: null})
   }
 
   setPageToCreateFood = () => {
     this.setState({ page: `create` })
+    this.setState({ selectedFood: null })
   }
 
 
   render() {
-    const {page, foods} = this.state
+    const {page, foods, selectedFood} = this.state
     const {foodCardClickHandler, setPageToCreateFood, setPageToFoods} =  this
     return (
         <div className='App'>
         <NavBar createFood={setPageToCreateFood} foods={setPageToFoods} />
           { page === `foods` 
-            ? <FoodPage foods={foods} foodCardClickHandler={foodCardClickHandler} />
+            ? <FoodPage foods={foods} foodCardClickHandler={foodCardClickHandler} selectedFood={selectedFood} />
             : <CreateFoodPage />
           }
         </div>
