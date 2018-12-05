@@ -7,7 +7,7 @@ import ReservedFoodContainer from './ReservedFoodContainer'
 
 class FoodPage extends Component {
   render () {
-    const { foods, foodCardClickHandler, selectedFood, reservedFood } = this.props
+    const { foods, foodCardClickHandler, selectedFood, reservedFood, reserveFood } = this.props
     return (
       <div>
         { selectedFood === null
@@ -17,7 +17,7 @@ class FoodPage extends Component {
               foodCardClickHandler={foodCardClickHandler}
             />
           </CardGroup>
-          : <ReserveFoodPage selectedFood={selectedFood} />
+          : <ReserveFoodPage selectedFood={selectedFood} handleSubmit={reserveFood} />
         }
         <Header as='h3' block>
           Your Reserved Foods

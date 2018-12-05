@@ -14,7 +14,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch(`http://localhost:3000/v1/foods`)
+    fetch(`http://localhost:3001/v1/foods`)
       .then(resp => resp.json())
       .then(foods => this.setState({foods}))
 
@@ -25,6 +25,19 @@ class App extends Component {
 
   createFood = () => {
 
+  }
+
+  reserveFood = () => {
+      fetch('http://localhost:3001/v1/reservations', {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json; charset=utf-8",
+        },
+        body: JSON.stringify({
+          food_id: this.state.selectedFood.id,
+          consumer_id: 2
+        })
+      }).then(resp => resp.json())
   }
 
   foodCardClickHandler = (food) => {
@@ -45,12 +58,12 @@ class App extends Component {
 
   render() {
     const {page, foods, selectedFood, reservedFood} = this.state
-    const {foodCardClickHandler, setPageToCreateFood, setPageToFoods} =  this
+    const {foodCardClickHandler, setPageToCreateFood, setPageToFoods, reserveFood} =  this
     return (
       <div className='App'>
         <NavBar createFood={setPageToCreateFood} foods={setPageToFoods} />
           { page === `foods` 
-            ? <FoodPage foods={foods} foodCardClickHandler={foodCardClickHandler} selectedFood={selectedFood} reservedFood={reservedFood} />
+            ? <FoodPage foods={foods} foodCardClickHandler={foodCardClickHandler} selectedFood={selectedFood} reservedFood={reservedFood} reserveFood={reserveFood} />
             : <CreateFoodPage />
           }
         </div>
