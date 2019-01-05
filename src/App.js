@@ -14,11 +14,11 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch(`http://localhost:3001/v1/foods`)
+    fetch(`https://foodshare-api.herokuapp.com/v1/foods`)
       .then(resp => resp.json())
       .then(foods => this.setState({foods}))
 
-    fetch('http://localhost:3001/v1/consumers/3')
+    fetch('https://foodshare-api.herokuapp.com/v1/consumers/3')
       .then(resp => resp.json())
       .then(reservedFood => this.setState({reservedFood:reservedFood.foods}))
   }
@@ -28,7 +28,7 @@ class App extends Component {
   }
 
   reserveFood = () => {
-      fetch('http://localhost:3001/v1/reservations', {
+      fetch('https://foodshare-api.herokuapp.com/v1/reservations', {
         method: 'POST',
         headers: {
           "Content-Type": "application/json; charset=utf-8",
